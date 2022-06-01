@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo MVC</title>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body onload="onInit()">
+    <div class="container">
+      <h1 class="title">Todo MVC</h1>
+      <section class="todo-filter">
+        <h2>Todo Filter</h2>
+
+        <input
+          class="search"
+          type="text"
+          name="filter-txt"
+          oninput="onSetFilterByTxt(this.value)"
+          placeholder="Start typing..."
+        />
+
+        <select class="filter-select" onchange="onSetFilter(this.value)">
+          <option value="">All</option>
+          <option value="active">Active</option>
+          <option value="done">בוצע</option>
+        </select>
+      </section>
+      <ul></ul>
+      <section class="stat">
+        Total todos: <span class="total-count">3</span> Active:
+        <span class="active-count">2</span>
+        Done todos: <span class="done-todos">3</span>
+      </section>
+
+      <div class="forms">
+        <div class="add-todo">
+          <form onsubmit="onAddTodo(event)">
+            <input
+              type="text"
+              name="txt"
+              placeholder="What do you need to do"
+            />
+            <button>Add</button>
+            <label for="importance">Select importance:</label>
+            <select name="importance" id="select-importance">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </form>
+        </div>
+        <div>
+          <form onsubmit="onSortTodos(event)">
+            <label for="sort-todos">Sort Your Todos by:</label>
+            <select name="sort-todos" id="sort-select">
+              <option value="txt">Name</option>
+              <option value="date">Date</option>
+              <option value="importance">importance</option>
+            </select>
+            <button>Sort</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/services/storage.service.js"></script>
+    <script src="js/services/todo.service.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
